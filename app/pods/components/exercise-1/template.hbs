@@ -1,0 +1,135 @@
+<div class="flex">
+  <div class="w-col flex-no-shrink min-h-screen border-r border-grey-lighter ml-4 pt-4">
+    <h1 class='mt-3 mb-8'>Exercise 1</h1>
+
+    <div class="mb-8">
+      <p class='text-sm text-grey uppercase mb-4'>Search</p>
+
+      {{input class='p-2 text-sm border'
+        value=name
+        input=(action 'search' 'name')
+        type="text"
+        placeholder='Name'}}
+
+      {{input class='p-2 text-sm border mt-2'
+        value=summary
+        input=(action 'search' 'summary')
+        type="text"
+        placeholder='Summaries'}}
+
+      {{input class='p-2 text-sm border mt-2'
+        value=season
+        input=(action 'search' 'season')
+        type="text"
+        placeholder='Season'}}
+
+      {{input class='p-2 text-sm border mt-2'
+        value=number
+        input=(action 'search' 'number')
+        type="text"
+        placeholder='Episode number'}}
+
+      <p class='text-sm text-grey uppercase mt-8'>Items</p>
+      <p class='mt-2'>
+        {{#if itemCount}}
+          {{itemCount}} episodes found
+        {{else}}
+          &nbsp;
+        {{/if}}
+      </p>
+
+      <p class='text-sm text-grey uppercase mt-8'>Sort</p>
+      <p class='mt-2'>
+        Release date
+        <a href='#' class='ml-2 text-black' {{action 'resort'}}>
+          {{#if (eq sort 'airdate')}}
+            {{fa-icon 'angle-up'}}
+          {{else}}
+            {{fa-icon 'angle-down'}}
+          {{/if}}
+        </a>
+      </p>
+
+      <p class='text-sm text-grey uppercase mt-8'>Page</p>
+      <p class='mt-2'>
+        {{#if pageCount}}
+          <div class="flex">
+            <a {{action 'previousPage'}}
+              href="#"
+              class='mr-4 px-1 {{if onFirstPage 'pointer-events-none text-grey' 'text-black'}}'>
+              {{fa-icon 'angle-left'}}
+            </a>
+            <div class='flex text-center mr-4'>
+              <span class="w-20">
+                {{findEpisodes.lastSuccessful.value.meta.page}}
+              </span>
+              <span class="w-20">
+                /
+              </span>
+              <span class="w-20">
+                {{pageCount}}
+              </span>
+            </div>
+            <a {{action 'nextPage'}}
+              href="#"
+              class='mr-4 px-1 {{if onLastPage 'pointer-events-none text-grey' 'text-black'}}'>
+              {{fa-icon 'angle-right'}}
+            </a>
+          </div>
+        {{else}}
+          &nbsp;
+        {{/if}}
+      </p>
+
+      {{#if findEpisodes.isRunning}}
+        <p class='mt-4'>{{fa-icon 'spinner' spin=true}} Loading...</p>
+      {{/if}}
+    </div>
+  </div>
+  <div class="flex-grow h-screen overflow-y-scroll">
+    <div class="p-6">
+      <div class="mx-auto">
+
+        {{#unless findEpisodes.lastSuccessful}}
+
+          <p>Loading...</p>
+
+        {{else}}
+
+          {{#each findEpisodes.lastSuccessful.value as |episode|}}
+            <div class='rounded border bg-white mb-4 p-3 mx-auto'>
+              <div class="flex">
+                <div class="w-100 flex-no-shrink">
+                  <div class="ar ar-16x9">
+                    <div class="ar-object">
+                      <img src="{{episode.image}}">
+                    </div>
+                  </div>
+                </div>
+                <div class='ml-4 w-40% flex-no-shrink'>
+                  <h2 class='text-lg font-bold'>{{episode.name}}</h2>
+                  <h3 class='mt-1 text-sm font-normal opacity-50'>Season {{episode.season}}, Episode {{episode.number}}</h3>
+                </div>
+                <div class="h-16 overflow-y-scroll">
+                  <div class='leading-normal text-xs'>{{{episode.summary}}}</div>
+                </div>
+              </div>
+
+              {{!-- <div class="flex">
+                <div class="w-50% p-2">
+                  <h2 class='mb-2 font-semibold'>{{episode.name}}</h2>
+                  <h3 class='mb-4 font-normal opacity-50'>Season {{episode.season}}, Episode {{episode.number}}</h3>
+                  <img src="{{episode.image.original}}" class='mb-4'>
+                </div>
+                <div class="w-50% p-2">
+                  <div class='leading-normal text-xs'>{{{episode.summary}}}</div>
+                </div>
+              </div> --}}
+            </div>
+          {{/each}}
+
+        {{/unless}}
+      </div>
+    </div>
+  </div>
+</div>

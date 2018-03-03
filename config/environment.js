@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'emberconf2018-advanced-mirage',
+    podModulePrefix: 'emberconf2018-advanced-mirage/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
@@ -20,6 +21,10 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    'ember-cli-mirage': {
+      enabled: false
     }
   };
 
