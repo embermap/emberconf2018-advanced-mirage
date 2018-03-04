@@ -1,54 +1,12 @@
-import Component from '@ember/component';
 import { inject as service } from '@ember/service';
-import Server from 'ember-cli-mirage/server';
-import { Model, JSONAPISerializer } from 'ember-cli-mirage';
-import episodes from './_episodes';
-import baseConfig from './mirage-config';
 import { task } from 'ember-concurrency';
 import { set } from '@ember/object';
 import { computed } from '@ember/object';
+import Controller from '@ember/controller';
 
-export default Component.extend({
+export default Controller.extend({
 
   store: service(),
-
-  didInsertElement() {
-    this._super(...arguments);
-
-    this.set('server', this.createServer());
-    this.get('findEpisodes').perform();
-  },
-
-  willDestroyElement() {
-    this._super(...arguments);
-
-    this.get('server').shutdown();
-  },
-
-  createServer() {
-    return new Server({
-      serializers: {
-        application: JSONAPISerializer.extend({
-          serialize(object) {
-            let json = JSONAPISerializer.prototype.serialize.apply(this, arguments);
-            if (object.meta) {
-              json.meta = object.meta;
-            }
-            return json;
-          }
-        })
-      },
-      models: {
-        episode: Model
-      },
-
-      fixtures: {
-        episodes,
-      },
-
-      baseConfig
-    })
-  },
 
   name: '',
   summary: '',

@@ -1,0 +1,20 @@
+{{#each episodes as |episode|}}
+  <div class='rounded border bg-white mb-4 p-3 mx-auto'>
+    <div class="flex">
+      <div class="w-100 flex-no-shrink">
+        <div class="ar ar-16x9">
+          <div class="ar-object">
+            <img src="{{episode.image}}">
+          </div>
+        </div>
+      </div>
+      <div class='ml-4 w-40% flex-no-shrink'>
+        <h2 class='text-lg font-bold'>{{episode.name}}</h2>
+        <h3 class='mt-1 text-sm font-normal opacity-50'>Season {{episode.season}}, Episode {{episode.number}}</h3>
+      </div>
+      <div class="h-16 overflow-y-scroll">
+        <div class='leading-normal text-xs'>{{{episode.summary}}}</div>
+      </div>
+    </div>
+  </div>
+{{/each}}

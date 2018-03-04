@@ -86,49 +86,11 @@
       {{/if}}
     </div>
   </div>
+  
   <div class="flex-grow h-screen overflow-y-scroll">
     <div class="p-6">
       <div class="mx-auto">
-
-        {{#unless findEpisodes.lastSuccessful}}
-
-          <p>Loading...</p>
-
-        {{else}}
-
-          {{#each findEpisodes.lastSuccessful.value as |episode|}}
-            <div class='rounded border bg-white mb-4 p-3 mx-auto'>
-              <div class="flex">
-                <div class="w-100 flex-no-shrink">
-                  <div class="ar ar-16x9">
-                    <div class="ar-object">
-                      <img src="{{episode.image}}">
-                    </div>
-                  </div>
-                </div>
-                <div class='ml-4 w-40% flex-no-shrink'>
-                  <h2 class='text-lg font-bold'>{{episode.name}}</h2>
-                  <h3 class='mt-1 text-sm font-normal opacity-50'>Season {{episode.season}}, Episode {{episode.number}}</h3>
-                </div>
-                <div class="h-16 overflow-y-scroll">
-                  <div class='leading-normal text-xs'>{{{episode.summary}}}</div>
-                </div>
-              </div>
-
-              {{!-- <div class="flex">
-                <div class="w-50% p-2">
-                  <h2 class='mb-2 font-semibold'>{{episode.name}}</h2>
-                  <h3 class='mb-4 font-normal opacity-50'>Season {{episode.season}}, Episode {{episode.number}}</h3>
-                  <img src="{{episode.image.original}}" class='mb-4'>
-                </div>
-                <div class="w-50% p-2">
-                  <div class='leading-normal text-xs'>{{{episode.summary}}}</div>
-                </div>
-              </div> --}}
-            </div>
-          {{/each}}
-
-        {{/unless}}
+        {{episode-list episodes=findEpisodes.lastSuccessful.value}}
       </div>
     </div>
   </div>
