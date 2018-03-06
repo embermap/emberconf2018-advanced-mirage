@@ -1,56 +1,32 @@
-# emberconf2018-advanced-mirage
+# EmberConf 2018 Training – Advanced Mirage
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Hi there!
 
-## Prerequisites
+We're super excited that you're attending our **Advanced Mirage** training at EmberConf on Monday. 😀
 
-You will need the following things properly installed on your computer.
+Follow the steps below to make sure your computer is set up with our training app.
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
+Conference WiFi isn't super reliable, so we recommend doing the setup ahead of time at home or work.
 
-## Installation
+We'll ask that you `git pull` one more time the morning of the training to get the latest code – but the core node modules shouldn't change.
 
-* `git clone <repository-url>` this repository
-* `cd emberconf2018-advanced-mirage`
-* `npm install`
+# Setup
 
-## Running / Development
+> If you have any trouble with these steps, shoot us an email at [info@embermap.com](mailto:info@embermap.com).
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+## Node.js
 
-### Code Generators
+We're using Node.js 8.9.4, which is the current LTS version.
 
-Make use of the many generators for code, try `ember help generate` for more details
+## App
 
-### Running Tests
+To get this app on your computer,
 
-* `ember test`
-* `ember test --server`
+1. Open terminal
+2. Clone this git repository: `git clone git@github.com:embermap/emberconf2018-advanced-mirage.git`
+3. Move into the directory: `cd emberconf2018-advanced-mirage`
+4. Run NPM install: `npm install` (You might get some warnings, thats ok!)
+5. Serve the app `ember s`
+6. If you can see the screen below, you're all set!
 
-### Linting
-
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+**🎉 See you Monday!**
