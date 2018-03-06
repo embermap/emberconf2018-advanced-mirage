@@ -30,7 +30,7 @@ function filter(properties) {
 
       if (value) {
         let matcher = new RegExp(value, 'gi');
-        filteredRecords = filteredRecords.filter(record => record[property].toString().match(matcher));
+        filteredRecords = filteredRecords.filter(record => matcher.test(record[property]));
       }
     });
 

@@ -43,7 +43,7 @@ export default Controller.extend({
   }).restartable(),
 
   actions: {
-    search(property) {
+    search() {
       this.set('page', 1);
       this.get('findEpisodes').perform();
     },

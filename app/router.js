@@ -8,6 +8,8 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('exercise-1');
+  this.route('exercise-2');
+  this.route('exercise-3');
   this.route('exercise-final');
 });
 

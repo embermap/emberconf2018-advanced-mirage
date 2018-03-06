@@ -7,25 +7,25 @@
 
       {{input class='p-2 text-sm border'
         value=name
-        input=(action 'search' 'name')
+        input=(action 'search')
         type="text"
         placeholder='Name'}}
 
       {{input class='p-2 text-sm border mt-2'
         value=summary
-        input=(action 'search' 'summary')
+        input=(action 'search')
         type="text"
         placeholder='Summaries'}}
 
       {{input class='p-2 text-sm border mt-2'
         value=season
-        input=(action 'search' 'season')
+        input=(action 'search')
         type="text"
         placeholder='Season'}}
 
       {{input class='p-2 text-sm border mt-2'
         value=number
-        input=(action 'search' 'number')
+        input=(action 'search')
         type="text"
         placeholder='Episode number'}}
 
@@ -86,7 +86,7 @@
       {{/if}}
     </div>
   </div>
-  
+
   <div class="flex-grow h-screen overflow-y-scroll">
     <div class="p-6">
       <div class="mx-auto">

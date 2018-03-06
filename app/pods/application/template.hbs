@@ -6,16 +6,18 @@
       {{/link-to}}
     </p>
     <ul class='list-reset mt-12'>
-      <li class='mt-3'>
-        {{#link-to 'exercise-1' class='text-black hover:text-grey no-underline' activeClass='text-grey'}}
-          Exercise 1
-        {{/link-to}}
-      </li>
-      <li class='mt-3'>
-        {{#link-to 'exercise-final' class='text-black hover:text-grey no-underline' activeClass='text-grey'}}
-          Exercise final
-        {{/link-to}}
-      </li>
+      {{#nav-link 'exercise-1'}}
+        Exercise 1
+      {{/nav-link}}
+      {{#nav-link 'exercise-2'}}
+        Exercise 2
+      {{/nav-link}}
+      {{#nav-link 'exercise-3'}}
+        Exercise 3
+      {{/nav-link}}
+      {{#nav-link 'exercise-final'}}
+        Exercise final
+      {{/nav-link}}
     </ul>
   </div>
   <div class="flex-grow font-sans min-h-screen">

@@ -3,16 +3,17 @@ import { task } from 'ember-concurrency';
 
 export default Controller.extend({
 
+  name: '',
   season: '',
 
   findEpisodes: task(function*() {
-    let query = {};
+    let query = { filter: {} };
 
-    if (this.get('season')) {
-      query.filter = {
-        season: this.get('season')
+    [ 'name', 'season' ].forEach(prop => {
+      if (this.get(prop)) {
+        query.filter[prop] = this.get(prop);
       }
-    }
+    });
 
     return yield this.get('store').query('episode', query);
   }).restartable(),
