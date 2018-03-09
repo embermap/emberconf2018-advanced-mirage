@@ -1,7 +1,26 @@
-import Controller from '@ember/controller';
+import Component from '@ember/component';
 import { task } from 'ember-concurrency';
+import { inject as service } from '@ember/service';
+import createMirageServer from './exercise/server';
+// import createMirageServer from './solution/server';
 
-export default Controller.extend({
+export default Component.extend({
+
+  store: service(),
+
+  didInsertElement() {
+    this._super(...arguments);
+
+    this.set('server', createMirageServer());
+    this.get('findEpisodes').perform();
+    this.get('findCharacters').perform();
+  },
+
+  willDestroyElement() {
+    this._super(...arguments);
+
+    this.get('server').shutdown();
+  },
 
   findEpisodes: task(function*() {
     let query = { filter: {} };
