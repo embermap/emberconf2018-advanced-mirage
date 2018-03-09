@@ -1,7 +1,7 @@
 export default function() {
 
   this.get('/episodes', filterable('episodes', [ 'season', 'name' ]));
-  
+
   this.get('/characters', filterable('characters', [ 'name' ]));
 
 }
