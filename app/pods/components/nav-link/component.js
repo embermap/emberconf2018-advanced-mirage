@@ -6,6 +6,6 @@ export default Component.extend({
 
 }).reopenClass({
 
-  positionalParams: [ 'route' ]
+  positionalParams: [ 'model' ]
 
 });

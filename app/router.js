@@ -7,12 +7,7 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('1-exercise');
-  this.route('2-exercise');
-  this.route('3-exercise');
-  this.route('4-lecture');
-  this.route('5-exercise');
-  this.route('exercise-final');
+  this.route('step', { path: '/:id' });
 });
 
 export default Router;

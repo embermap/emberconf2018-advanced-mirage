@@ -1,3 +1,5 @@
+{{foo-bar}}
+
 <div class="flex">
   <div class="w-col flex-no-shrink min-h-screen p-4 border-r bg-grey-lightest">
     <p class='mt-3 text-xl'>
@@ -24,12 +26,14 @@
       {{#nav-link '5-exercise'}}
         5: Exercise
       {{/nav-link}}
-      {{#nav-link 'exercise-final'}}
+      {{!-- {{#nav-link 'exercise-final'}}
         Exercise final
-      {{/nav-link}}
+      {{/nav-link}} --}}
     </ul>
   </div>
   <div class="flex-grow font-sans min-h-screen">
     {{outlet}}
+
+    {{!-- {{1-exercise}} --}}
   </div>
 </div>
