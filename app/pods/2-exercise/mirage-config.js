@@ -5,7 +5,7 @@ export default function() {
 
     if (request.queryParams['filter[season]']) {
       let season = request.queryParams['filter[season]'];
-      episodes = episodes.filter(episode => episode.season = season);
+      episodes = episodes.filter(episode => episode.season == season);
     }
 
     return episodes;

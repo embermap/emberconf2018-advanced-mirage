@@ -1,20 +1,21 @@
 <div class="flex">
   <div class="w-col flex-no-shrink min-h-screen border-r border-grey-lighter px-4 pt-4">
-    <h1 class='mt-3 mb-8'>Exercise 1</h1>
+    <h1 class='mt-3 mb-8'>Exercise</h1>
     <p class='text-sm leading-normal'>Make the input search by season.</p>
 
     <div class="mt-8 mb-8">
-      <p class='text-sm text-grey uppercase mb-4'>Search</p>
+      <p class='text-sm text-grey uppercase mt-8 mb-4'>
+        Episodes
+        {{#if findEpisodes.isRunning}}
+          {{fa-icon 'spinner' spin=true}}
+        {{/if}}
+      </p>
 
       {{input class='p-2 text-sm border'
         value=season
-        input=(action 'search')
+        input=(perform findEpisodes)
         type="text"
         placeholder='Season'}}
-
-      {{#if findEpisodes.isRunning}}
-        <p class='mt-4'>{{fa-icon 'spinner' spin=true}} Loading...</p>
-      {{/if}}
     </div>
   </div>
 

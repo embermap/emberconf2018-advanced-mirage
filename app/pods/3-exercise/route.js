@@ -1,8 +1,8 @@
 import Route from '@ember/routing/route';
 import Server from 'ember-cli-mirage/server';
 import { Model, JSONAPISerializer } from 'ember-cli-mirage';
-import episodes from '../episodes';
-import baseConfig from './solution/mirage-config';
+import { episodes, characters } from 'emberconf2018-advanced-mirage/mirage/fixtures/index';
+import baseConfig from './mirage-config';
 
 export default Route.extend({
 
@@ -19,6 +19,7 @@ export default Route.extend({
   setupController(controller, model) {
     this._super(controller, model);
     this.get('controller.findEpisodes').perform();
+    this.get('controller.findCharacters').perform();
   },
 
   createServer() {
@@ -27,10 +28,12 @@ export default Route.extend({
         application: JSONAPISerializer
       },
       models: {
-        episode: Model
+        episode: Model,
+        character: Model,
       },
       fixtures: {
         episodes,
+        characters,
       },
       baseConfig
     })

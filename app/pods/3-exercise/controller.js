@@ -3,9 +3,6 @@ import { task } from 'ember-concurrency';
 
 export default Controller.extend({
 
-  name: '',
-  season: '',
-
   findEpisodes: task(function*() {
     let query = { filter: {} };
 
@@ -18,10 +15,16 @@ export default Controller.extend({
     return yield this.get('store').query('episode', query);
   }).restartable(),
 
-  actions: {
-    search() {
-      this.get('findEpisodes').perform();
+  findCharacters: task(function*() {
+    let query = { };
+
+    if (this.get('characterName')) {
+      query.filter = {
+        name: this.get('characterName')
+      }
     }
-  }
+
+    return yield this.get('store').query('character', query);
+  }).restartable()
 
 });

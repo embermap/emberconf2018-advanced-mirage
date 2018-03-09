@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import Server from 'ember-cli-mirage/server';
 import { Model, JSONAPISerializer } from 'ember-cli-mirage';
-import episodes from '../episodes';
+import episodes from 'emberconf2018-advanced-mirage/mirage/fixtures/episodes';
 import baseConfig from './mirage-config';
 
 export default Route.extend({

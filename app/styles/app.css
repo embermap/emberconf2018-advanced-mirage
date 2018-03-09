@@ -13,3 +13,12 @@
   width: 100%;
   height: 100%;
 }
+
+.md-styles p {
+  margin-bottom: 16px;
+}
+.md-styles pre {
+  background-color: #eee;
+  overflow: scroll;
+  margin-bottom: 16px;
+}
