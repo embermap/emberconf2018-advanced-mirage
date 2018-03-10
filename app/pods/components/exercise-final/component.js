@@ -1,17 +1,28 @@
-import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 import { task } from 'ember-concurrency';
-import { set } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
-import Controller from '@ember/controller';
+import { set } from '@ember/object';
+// import createMirageServer from './exercise/server';
+import createMirageServer from './solution/server';
 
-export default Controller.extend({
+export default Component.extend({
 
   store: service(),
 
-  name: '',
-  summary: '',
-  season: '',
-  number: '',
+  didInsertElement() {
+    this._super(...arguments);
+
+    this.set('server', createMirageServer());
+    this.get('findEpisodes').perform();
+  },
+
+  willDestroyElement() {
+    this._super(...arguments);
+
+    this.get('server').shutdown();
+  },
+
   sort: 'airdate',
   page: 1,
   pageCount: null,

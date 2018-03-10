@@ -1,11 +1,11 @@
 export default function() {
-  // this.timing = 25;
 
   this.get('/episodes', recordsFor('episodes', [
     filter([ 'name', 'summary', 'season', 'number' ]),
     sort(),
     paginate()
   ]));
+  
 }
 
 function recordsFor(resourceName, transforms=[]) {
