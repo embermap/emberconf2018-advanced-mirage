@@ -29,4 +29,6 @@ To get this app on your computer,
 5. Serve the app `ember s`
 6. If you can see the screen below, you're all set!
 
+![image](https://user-images.githubusercontent.com/2922250/37257700-469c4972-252a-11e8-8fcb-347039030d50.png)
+
 **🎉 See you Monday!**
