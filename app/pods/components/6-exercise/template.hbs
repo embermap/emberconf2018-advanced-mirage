@@ -1,0 +1,74 @@
+<div class="flex">
+  <div class="w-col flex-no-shrink min-h-screen border-r border-grey-lighter px-4 pt-4">
+    <h1 class='mt-3 mb-8'>Exercise</h1>
+    <p class='text-sm leading-normal'>Add pagination.</p>
+
+    <div class="mt-8 mb-8">
+      <p class='text-sm text-grey uppercase mt-8'>Items</p>
+      <p class='mt-2'>
+        {{if itemCount itemCount "--"}}
+        episodes found
+      </p>
+
+      <p class='text-sm text-grey uppercase mt-8'>Page</p>
+      <p class='mt-2'>
+        {{#if pageCount}}
+          <div class="flex">
+            <a {{action 'previousPage'}}
+              href="#"
+              class='mr-4 px-1 {{if onFirstPage 'pointer-events-none text-grey' 'text-black'}}'>
+              {{fa-icon 'angle-left'}}
+            </a>
+            <div class='flex text-center mr-4'>
+              <span class="w-20">
+                {{findEpisodes.lastSuccessful.value.meta.page}}
+              </span>
+              <span class="w-20">
+                /
+              </span>
+              <span class="w-20">
+                {{pageCount}}
+              </span>
+            </div>
+            <a {{action 'nextPage'}}
+              href="#"
+              class='mr-4 px-1 {{if onLastPage 'pointer-events-none text-grey' 'text-black'}}'>
+              {{fa-icon 'angle-right'}}
+            </a>
+          </div>
+        {{else}}
+          1 / --
+        {{/if}}
+      </p>
+
+      {{#if findEpisodes.isRunning}}
+        <p class='mt-4'>{{fa-icon 'spinner' spin=true}} Loading...</p>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="flex-grow h-screen overflow-y-scroll">
+    <div class="p-6">
+      <div class="mx-auto">
+
+        <div class="flex justify-between items-center">
+          <h2>Episodes</h2>
+
+          <div class="text-xs text-grey text-right">
+            {{#if findEpisodes.lastSuccessful.value}}
+              Generated at
+              {{if findEpisodes.lastSuccessful.value.meta.generatedAt
+                findEpisodes.lastSuccessful.value.meta.generatedAt
+                "--"}}
+            {{/if}}
+          </div>
+        </div>
+
+        <div class="mt-4">
+          {{episode-list episodes=findEpisodes.lastSuccessful.value}}
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

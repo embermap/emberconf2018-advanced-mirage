@@ -13,7 +13,6 @@ export default Component.extend({
 
     this.set('server', createMirageServer());
     this.get('findEpisodes').perform();
-    this.get('findCharacters').perform();
   },
 
   willDestroyElement() {
@@ -32,18 +31,6 @@ export default Component.extend({
     });
 
     return yield this.get('store').query('episode', query);
-  }).restartable(),
-
-  findCharacters: task(function*() {
-    let query = { };
-
-    if (this.get('characterName')) {
-      query.filter = {
-        name: this.get('characterName')
-      }
-    }
-
-    return yield this.get('store').query('character', query);
   }).restartable()
 
 });

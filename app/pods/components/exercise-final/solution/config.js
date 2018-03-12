@@ -5,7 +5,7 @@ export default function() {
     sort(),
     paginate()
   ]));
-  
+
 }
 
 function recordsFor(resourceName, transforms=[]) {
