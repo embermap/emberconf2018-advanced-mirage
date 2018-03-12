@@ -1,23 +1,22 @@
 import Server from 'ember-cli-mirage/server';
-import { Model, JSONAPISerializer } from 'ember-cli-mirage';
-import { episodes, characters } from 'emberconf2018-advanced-mirage/mirage/fixtures/index';
+import { Model } from 'ember-cli-mirage';
+import { episodes } from 'emberconf2018-advanced-mirage/mirage/fixtures/index';
+import Serializer from './serializer';
 import baseConfig from './config';
 
 export default function() {
 
   return new Server({
     serializers: {
-      application: JSONAPISerializer
+      application: Serializer
     },
 
     models: {
-      episode: Model,
-      character: Model,
+      episode: Model
     },
 
     fixtures: {
-      episodes,
-      characters,
+      episodes
     },
 
     baseConfig

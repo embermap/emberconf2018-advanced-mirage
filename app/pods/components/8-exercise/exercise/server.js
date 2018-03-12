@@ -1,6 +1,7 @@
 import Server from 'ember-cli-mirage/server';
 import { Model, hasMany, belongsTo, JSONAPISerializer } from 'ember-cli-mirage';
-import scenario from './schema';
+import scenario from './scenario';
+import factories from './factories';
 
 export default function() {
 
@@ -10,19 +11,21 @@ export default function() {
     },
     models: {
       day: Model.extend({
-        activities: hasMany('activities', { polymorphic: true })
+        activities: hasMany({ polymorphic: true })
       }),
       talk: Model.extend({
-        day: belongsTo('day'),
-        speakers: hasMany('speakers')
+        day: belongsTo({ inverse: 'activities' }),
+        speakers: hasMany()
       }),
       event: Model.extend({
-        day: belongsTo('day'),
+        day: belongsTo({ inverse: 'activities' }),
       }),
       speaker: Model.extend({
-        talks: hasMany('talk')
+        talks: hasMany()
       })
     },
+
+    factories,
 
     scenarios: {
       default: scenario

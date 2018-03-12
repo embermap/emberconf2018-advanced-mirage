@@ -4,6 +4,10 @@ export default function() {
     filter([ 'season', 'name' ])
   ]));
 
+  this.get('/characters', recordsFor('characters', [
+    filter([ 'name' ])
+  ]));
+
 }
 
 function recordsFor(resourceName, transforms=[]) {

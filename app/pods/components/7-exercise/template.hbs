@@ -1,0 +1,124 @@
+<div class="flex">
+  <div class="w-50% border-r border-grey-lighter px-4 pt-4">
+
+    <h2 class="text-center mb-1 text-lg bold py-6">
+      March 13th
+    </h2>
+
+    <div class="flex justify-start items-center py-4 border-b border-grey-light">
+      <div class="pr-6 w-100 text-sm">
+        <div class="mb-1">
+          9:30am
+        </div>
+        <div class="text-grey-dark">
+          10:30am
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-xl mb-1">
+          Opening Keynote
+        </h4>
+        <p>
+          <span class="text-grey-darker">Yehuda Katz</span>
+          &middot;
+          <span class="text-grey-darker">Tom Dale</span>
+        </p>
+      </div>
+
+      <div class="ml-auto bg-green text-white py-2 px-3 rounded text-sm">
+        Talk
+      </div>
+    </div>
+
+    <div class="flex justify-start items-center py-4">
+      <div class="pr-6 w-100 text-sm">
+        <div class="mb-1">
+          6:00pm
+        </div>
+        <div class="text-grey-dark">
+          7:00pm
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-xl mb-1">
+          Happy hour!
+        </h4>
+        <p>
+          <span class="text-grey-darker">
+            Main hall
+          </span>
+        </p>
+      </div>
+
+      <div class="ml-auto bg-orange text-white py-2 px-3 rounded text-sm">
+        Event
+      </div>
+    </div>
+
+  </div>
+
+  <div class="w-50% h-screen overflow-y-scroll px-4 pt-4">
+
+    {{#each days as |day|}}
+      <h2 class="text-center mb-1 text-lg bold py-6">
+        {{day.name}}
+      </h2>
+
+      {{#each day.activities as |activity|}}
+        <div class="flex justify-start items-center py-4
+          {{if (not (eq day.activities.lastObject activity)) 'border-b border-grey-light'}}">
+          <div class="pr-6 w-100 text-sm">
+            <div class="mb-1">
+              {{activity.start}}
+            </div>
+            <div class="text-grey-dark">
+              {{activity.end}}
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xl mb-1">
+              {{activity.title}}
+            </h4>
+            <p>
+              {{#if (eq activity.constructor.modelName 'talk')}}
+
+                {{#each activity.speakers as |speaker|}}
+                  <span class="text-grey-darker">
+                    {{speaker.name}}
+                  </span>
+
+                  {{#if (not (eq speaker activity.speakers.lastObject))}}
+                    &middot;
+                  {{/if}}
+                {{/each}}
+
+              {{else if (eq activity.constructor.modelName 'event')}}
+
+                <span class="text-gray">
+                  {{activity.location}}
+                </span>
+
+              {{/if}}
+            </p>
+          </div>
+
+          <div class="
+            ml-auto text-white py-2 px-3 rounded text-sm
+            bg-{{if (eq activity.constructor.modelName 'talk') 'green' 'orange'}}">
+
+            {{#if (eq activity.constructor.modelName 'talk')}}
+              Talk
+            {{else if (eq activity.constructor.modelName 'event')}}
+              Event
+            {{/if}}
+          </div>
+
+        </div>
+      {{/each}}
+
+    {{/each}}
+  </div>
+</div>

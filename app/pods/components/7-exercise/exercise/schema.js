@@ -33,7 +33,7 @@ export default function({ schema }) {
 
     To create a model, use schema.model.create({ attrs }), for example:
 
-    schema.day.create({ name: 'March 13th' });
-    
+    schema.days.create({ name: 'March 13th' });
+
   */
 }
